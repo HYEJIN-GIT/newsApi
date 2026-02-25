@@ -34,3 +34,92 @@
     padding: 1em;
     border-bottom: 2px solid black;
 }
+
+.search-area{
+    margin: 1em;
+ 
+}
+.fa-magnifying-glass{
+   margin-top: 20px;
+   cursor: pointer;
+}
+
+#user-input{
+    margin-left: 7px;
+    padding-left: 10px;
+    border-radius: 10px;
+    width: 200px;
+    border:1px solid lightgray;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+
+}
+
+#keyword-btn{
+    margin-left: 5px;
+    border: none;
+    background-color: #ebebeb;
+    border-radius: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.3s;
+
+}
+
+#user-input.active,
+#keyword-btn.active {
+    opacity: 1;
+    visibility: visible;
+   
+}
+
+.fa-bars{
+    display: none;
+    margin-right: 10px;
+}
+.side-menus{
+    display: none;
+}
+
+@media screen and (max-width : 480px) {
+    
+.fa-bars{
+    display: inline-block;
+}
+.menus button {
+    display: none
+}
+.fa-x{
+    cursor: pointer;
+    position: absolute;
+    right: 20px;
+    top: 13px;
+}
+.side-menus {
+    position: fixed;
+    top: 0;
+    left: -250px;
+    width: 250px;
+    height: 100vh;
+    background: rgb(167, 175, 143);
+    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+    transition: 0.3s;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+   
+  }
+  .side-menus.active {
+    left: 0;
+  }
+.side-menus button{
+   border: none;
+    margin: 10px;
+    background:none;
+}
+.side-menus button:hover:active{
+   
+     background:rgb(163, 199, 200);
+ }
+}
