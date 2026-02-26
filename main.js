@@ -5,25 +5,33 @@ let searchIcon = document.querySelector('.fa-magnifying-glass')
 let userInput = document.getElementById('user-input')
 let keywordButton = document.getElementById('keyword-btn')
 let bars = document.querySelector('.fa-bars')
-const sideMenu = document.querySelector(".side-menus");
-const sideMenuButton = document.querySelectorAll(".side-menus");
+let sideButton = document.querySelectorAll('.side-menu-area a')
+
+
 let deleteButton = document.querySelector('.fa-x')
 let menus = document.querySelectorAll('.menus button')
 
 
 //카테고리 버튼 
-sideMenu,menus.forEach((item)=>
+menus.forEach((item)=>
 item.addEventListener("click",(event)=>{
     getNewsByCategory(event)
 }))
 
-//사이드 카테고리 버튼
-sideMenuButton.forEach((item)=>
+//사이드 카테고리
+
+function openNav() {
+    document.getElementById("mySidenav").style.width = "250px";
+  }
+  function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+  }
+
+  sideButton.forEach((item)=>
     item.addEventListener("click",(event)=>{
-        sideMenu.classList.remove("active");
         getNewsByCategory(event)
+        closeNav() 
     }))
-    
 
 //서치아이콘
 searchIcon.addEventListener("click",()=>{
@@ -31,17 +39,7 @@ searchIcon.addEventListener("click",()=>{
     keywordButton.classList.toggle("active");
 })
 
-//모바일 버전 bar
-bars.addEventListener("click",()=>{
-    sideMenu.classList.toggle("active");
-})
 
-//사이드 메뉴 끄기
-deleteButton.addEventListener("click",()=>{
-    sideMenu.classList.remove("active");
-    
-})
-    
 
 //코드 리펙토링
 

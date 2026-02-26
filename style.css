@@ -78,11 +78,51 @@
     display: none;
     margin-right: 10px;
 }
-.side-menus{
-    display: none;
-}
 
-@media screen and (max-width: 63rem) {
+
+
+.sidenav {
+    height: 100%; 
+    width: 0; 
+    position: fixed;
+    z-index: 1; 
+    top: 0;
+    left: 0;
+    background-color: #111; 
+    overflow-x: hidden; 
+    padding-top: 60px; 
+    transition: 0.5s; 
+  }
+  
+
+  .sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+  }
+  
+  
+  .sidenav a:hover {
+    color: #f1f1f1;
+  }
+  
+  .sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+  }
+  
+ 
+
+
+
+
+@media screen and (max-width : 63rem) {
     
 .fa-bars{
     display: inline-block;
@@ -90,36 +130,8 @@
 .menus button {
     display: none
 }
-.fa-x{
-    cursor: pointer;
-    position: absolute;
-    right: 20px;
-    top: 13px;
-}
-.side-menus {
-    position: fixed;
-    top: 0;
-    left: -250px;
-    width: 250px;
-    height: 100vh;
-    background: rgb(167, 175, 143);
-    box-shadow: 2px 0 5px rgba(0,0,0,0.1);
-    transition: 0.3s;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-   
-  }
-  .side-menus.active {
-    left: 0;
-  }
-.side-menus button{
-   border: none;
-    margin: 10px;
-    background:none;
-}
-.side-menus button:hover:active{
-   
-     background:rgb(163, 199, 200);
- }
+
+.sidenav {padding-top: 15px;}
+.sidenav a {font-size: 18px;}
+
 }
