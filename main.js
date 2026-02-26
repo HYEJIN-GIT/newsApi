@@ -1,31 +1,53 @@
 //뉴스 함수 호출
-
+let  url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?`)
 let newsList = []
 let searchIcon = document.querySelector('.fa-magnifying-glass')
 let userInput = document.getElementById('user-input')
 let keywordButton = document.getElementById('keyword-btn')
 let bars = document.querySelector('.fa-bars')
 const sideMenu = document.querySelector(".side-menus");
+const sideMenuButton = document.querySelectorAll(".side-menus");
 let deleteButton = document.querySelector('.fa-x')
+let menus = document.querySelectorAll('.menus button')
 
+
+//카테고리 버튼 
+sideMenu,menus.forEach((item)=>
+item.addEventListener("click",(event)=>{
+    getNewsByCategory(event)
+}))
+
+//사이드 카테고리 버튼
+sideMenuButton.forEach((item)=>
+    item.addEventListener("click",(event)=>{
+        sideMenu.classList.remove("active");
+        getNewsByCategory(event)
+    }))
+    
+
+//서치아이콘
 searchIcon.addEventListener("click",()=>{
     userInput.classList.toggle("active");
     keywordButton.classList.toggle("active");
 })
 
+//모바일 버전 bar
 bars.addEventListener("click",()=>{
     sideMenu.classList.toggle("active");
 })
- 
+
+//사이드 메뉴 끄기
 deleteButton.addEventListener("click",()=>{
     sideMenu.classList.remove("active");
+    
 })
     
 
+//코드 리펙토링
 
+const getNews = async ()=>{
 
-const getLatestNews = async ()=>{
-    let  url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?`)
+    
     let response = await fetch(url)
     console.log("response",response)
     let data = await response.json() //파일 형태 확장자 
@@ -35,11 +57,31 @@ const getLatestNews = async ()=>{
     render()
 }
 
+
+
+const getLatestNews = async ()=>{
+    url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?`)
+    getNews()
+}
+
 getLatestNews()
 
 
+//카테고리별 뉴스
+const getNewsByCategory= async (event)=>{
+    let category = event.target.textContent.toLowerCase()
+    url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?category=${category}`)
+    getNews()
+}
 
 
+//키워드별 뉴스
+
+const getNewsByKeyword = async ()=>{
+    let keyword = userInput.value
+    url = new URL(`https://noona-times-be-5ca9402f90d9.herokuapp.com/top-headlines?q=${keyword}`)
+    getNews()
+}
 
 const render =() =>{
  let newsHTML = newsList.map((news)=>
