@@ -46,13 +46,28 @@ searchIcon.addEventListener("click",()=>{
 const getNews = async ()=>{
 
     
-    let response = await fetch(url)
-    console.log("response",response)
-    let data = await response.json() //파일 형태 확장자 
-    console.log("data",data)
-    newsList = data.articles
-    console.log(newsList)
-    render()
+    try {
+         
+        let response = await fetch(url)
+        console.log("response",response)
+        let data = await response.json() //파일 형태 확장자 
+           console.log("data",data)
+        if(response.status === 200){
+           if(data.articles.length === 0){
+                    throw new Error("No matches for your search")
+                }
+                newsList = data.articles
+                console.log(newsList)
+                render()
+    
+        }else{
+            throw new Error(data.message)
+        }
+            
+        } catch (error) {
+           errorRender(error.message)
+        }
+       
 }
 
 
@@ -109,4 +124,16 @@ const render =() =>{
  `).join('')
 
  document.getElementById('news-list').innerHTML = newsHTML
+}
+
+
+
+const errorRender = (error)=>{
+
+    const errorHTML = `
+    <div class="alert alert-danger" role="alert">
+  ${error}
+</div>
+    `
+    document.getElementById('news-list').innerHTML =errorHTML
 }
