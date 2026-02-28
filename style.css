@@ -124,6 +124,34 @@
     text-align: center;
 }
 
+
+
+.pagination{
+   
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+.page-item {
+    
+    cursor: pointer;
+}
+.page-link:hover {
+    border-color: rgb(241, 229, 189);
+    color: #524343;
+    background-color: rgb(247, 243, 228);
+}
+
+.page-link {
+    color: #111;
+    transition: all 0.3s ease;
+  }
+.page-link.active {
+    border-color: rgb(241, 229, 189);
+    color: #524343;
+    background-color: rgb(241, 229, 189);
+    transition: all 0.3s ease;
+  }
 @media screen and (max-width : 63rem) {
     
 .fa-bars{
@@ -137,3 +165,4 @@
 .sidenav a {font-size: 18px;}
 
 }
+
